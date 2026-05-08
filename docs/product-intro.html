@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 电子宠物「小橘」- 产品说明文档</title>
+  <style>
+    :root {
+      --color-bg: #FAFAFA;
+      --color-surface: #FFFFFF;
+      --color-primary: #FF8C42;
+      --color-primary-light: #FFF3E8;
+      --color-text: #2D2D2D;
+      --color-text-secondary: #666666;
+      --color-border: #EEEEEE;
+      --color-code-bg: #F6F8FA;
+      --color-accent: #FF6B6B;
+      --color-success: #4CAF50;
+      --color-blue: #5B8DEF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, "PingFang SC", "SF Pro Text", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--color-text);
+      background: var(--color-bg);
+    }
+
+    /* ===== Layout ===== */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 32px 100px;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      text-align: center;
+      padding: 60px 0 50px;
+    }
+
+    .hero__badge {
+      display: inline-block;
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero__title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero__subtitle {
+      font-size: 1.1rem;
+      color: var(--color-text-secondary);
+      max-width: 560px;
+      margin: 0 auto 28px;
+    }
+
+    .hero__cta {
+      display: inline-block;
+      background: var(--color-primary);
+      color: white;
+      text-decoration: none;
+      padding: 12px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.2s;
+    }
+
+    .hero__cta:hover {
+      background: #e07a35;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(255, 140, 66, 0.3);
+    }
+
+    .hero__meta {
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--color-text-secondary);
+    }
+
+    .hero__meta code {
+      background: var(--color-code-bg);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    /* ===== Sections ===== */
+    section {
+      margin-bottom: 64px;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--color-border);
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--color-text);
+      margin: 32px 0 14px;
+    }
+
+    h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 24px 0 10px;
+      color: var(--color-text-secondary);
+    }
+
+    p {
+      margin-bottom: 14px;
+      color: var(--color-text);
+    }
+
+    /* ===== Feature Cards ===== */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .feature-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 22px;
+      transition: all 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--color-primary);
+      box-shadow: 0 4px 16px rgba(255, 140, 66, 0.08);
+    }
+
+    .feature-card__icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .feature-card__title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .feature-card__desc {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ===== Highlight Box ===== */
+    .highlight-box {
+      background: var(--color-primary-light);
+      border-left: 4px solid var(--color-primary);
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+
+    .highlight-box strong {
+      color: var(--color-primary);
+    }
+
+    /* ===== Trait Visualization ===== */
+    .trait-diagram {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 28px;
+      margin: 24px 0;
+    }
+
+    .trait-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .trait-row:last-child { margin-bottom: 0; }
+
+    .trait-label {
+      width: 70px;
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      text-align: right;
+      padding-right: 12px;
+      flex-shrink: 0;
+    }
+
+    .trait-bar {
+      flex: 1;
+      height: 8px;
+      background: #F0F0F0;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .trait-bar__fill {
+      position: absolute;
+      height: 100%;
+      background: linear-gradient(90deg, #FFB380, #FF8C42);
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+
+    .trait-bar__center {
+      position: absolute;
+      top: -4px;
+      left: 50%;
+      width: 2px;
+      height: 16px;
+      background: #CCC;
+      border-radius: 1px;
+    }
+
+    .trait-label-end {
+      width: 70px;
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      padding-left: 12px;
+      flex-shrink: 0;
+    }
+
+    .trait-name {
+      font-size: 11px;
+      color: var(--color-primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+      display: block;
+      text-align: center;
+    }
+
+    /* ===== Table ===== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    th {
+      background: var(--color-code-bg);
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--color-text-secondary);
+    }
+
+    td { color: var(--color-text); }
+
+    tr:hover td { background: #FAFAFA; }
+
+    /* ===== Code Block ===== */
+    .code-block {
+      background: #1E1E2E;
+      color: #CDD6F4;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 16px 0;
+      overflow-x: auto;
+      font-family: "SF Mono", "Fira Code", monospace;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .code-block .comment { color: #6C7086; }
+    .code-block .string { color: #A6E3A1; }
+    .code-block .keyword { color: #CBA6F7; }
+    .code-block .number { color: #FAB387; }
+    .code-block .key { color: #89B4FA; }
+
+    code {
+      background: var(--color-code-bg);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-family: "SF Mono", "Fira Code", monospace;
+      font-size: 0.85em;
+    }
+
+    /* ===== Comparison Cards ===== */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .comparison-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .comparison-card__label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .comparison-card__persona {
+      font-size: 12px;
+      color: var(--color-primary);
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .comparison-card__text {
+      font-size: 14px;
+      color: var(--color-text);
+      background: var(--color-code-bg);
+      padding: 12px;
+      border-radius: 8px;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* ===== Architecture Diagram ===== */
+    .arch-diagram {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 24px 0;
+      text-align: center;
+    }
+
+    .arch-layer {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .arch-box {
+      background: var(--color-code-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .arch-box--primary {
+      background: var(--color-primary-light);
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    .arch-box--dark {
+      background: #2D2D2D;
+      color: white;
+      border-color: #2D2D2D;
+    }
+
+    .arch-arrow {
+      text-align: center;
+      color: var(--color-text-secondary);
+      font-size: 18px;
+      margin: 8px 0;
+    }
+
+    .arch-label {
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+    }
+
+    /* ===== Flow Steps ===== */
+    .flow {
+      margin: 24px 0;
+    }
+
+    .flow-step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+      align-items: flex-start;
+    }
+
+    .flow-step__num {
+      width: 28px;
+      height: 28px;
+      background: var(--color-primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .flow-step__content {
+      flex: 1;
+      padding-top: 3px;
+    }
+
+    .flow-step__title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .flow-step__desc {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+    }
+
+    /* ===== Roadmap ===== */
+    .roadmap-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      font-size: 14px;
+    }
+
+    .roadmap-item--done::before {
+      content: "✓";
+      display: inline-flex;
+      width: 20px;
+      height: 20px;
+      background: var(--color-success);
+      color: white;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .roadmap-item--todo::before {
+      content: "";
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--color-border);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      text-align: center;
+      padding: 40px 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-secondary);
+      font-size: 13px;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      .container { padding: 30px 20px 60px; }
+      .hero__title { font-size: 1.8rem; }
+      .comparison { grid-template-columns: 1fr; }
+      .features { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Hero -->
+    <header class="hero">
+      <span class="hero__badge">MVP v1.0</span>
+      <h1 class="hero__title">AI 电子宠物「小橘」</h1>
+      <p class="hero__subtitle">
+        一只会成长的 AI 猫咪。它的性格随你们的互动逐渐演化——你怎么对它，它就会变成什么样。
+      </p>
+      <a class="hero__cta" href="https://frolicking-chaja-9b73a8.netlify.app" target="_blank">立即体验 Demo</a>
+      <p class="hero__meta">
+        技术栈: <code>原生前端</code> + <code>Netlify Functions</code> + <code>DeepSeek API</code>
+      </p>
+    </header>
+
+    <!-- 核心特性 -->
+    <section>
+      <h2>核心特性</h2>
+      <div class="features">
+        <div class="feature-card">
+          <div class="feature-card__icon">🧬</div>
+          <div class="feature-card__title">性格自适应</div>
+          <div class="feature-card__desc">三维度性格参数随每次对话自动演化，每只小橘都独一无二</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🧠</div>
+          <div class="feature-card__title">对话记忆</div>
+          <div class="feature-card__desc">记住你说过的话，能主动引用历史话题，真正"认识"你</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">💕</div>
+          <div class="feature-card__title">情感感知</div>
+          <div class="feature-card__desc">识别你的情绪并做出对应回应——开心时撒娇，难过时安慰</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">📈</div>
+          <div class="feature-card__title">成长体系</div>
+          <div class="feature-card__desc">初识→熟悉→亲密→挚友，四阶段成长改变对话深度</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🔌</div>
+          <div class="feature-card__title">多模型支持</div>
+          <div class="feature-card__desc">DeepSeek / OpenAI / Claude / Moonshot / 智谱 / 通义千问</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🌐</div>
+          <div class="feature-card__title">零门槛</div>
+          <div class="feature-card__desc">打开网页即用，无需安装，数据存在本地保护隐私</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 性格自适应系统 -->
+    <section>
+      <h2>性格自适应系统（核心创新）</h2>
+
+      <h3>设计理念</h3>
+      <p>传统聊天机器人的「人设」是静态的——从第一天到第一百天，性格不会有任何变化。小橘的自适应系统打破了这一限制：</p>
+
+      <div class="highlight-box">
+        <strong>你怎么对它，它就会变成什么样。</strong><br>
+        跟它开玩笑 → 它学会毒舌；每天陪它聊 → 它变得粘人；需要安慰 → 它越来越温柔。
+      </div>
+
+      <h3>三维度性格模型</h3>
+      <p>性格用三个独立维度描述，每个维度在 <code>[-1, +1]</code> 范围内<strong>连续变化</strong>，不是离散档位：</p>
+
+      <div class="trait-diagram">
+        <span class="trait-name">Energy 活力轴</span>
+        <div class="trait-row">
+          <span class="trait-label">安静内敛</span>
+          <div class="trait-bar">
+            <div class="trait-bar__center"></div>
+            <div class="trait-bar__fill" style="left:50%;width:30%"></div>
+          </div>
+          <span class="trait-label-end">活泼好动</span>
+        </div>
+
+        <span class="trait-name">Attachment 依恋轴</span>
+        <div class="trait-row">
+          <span class="trait-label">独立高冷</span>
+          <div class="trait-bar">
+            <div class="trait-bar__center"></div>
+            <div class="trait-bar__fill" style="left:50%;width:15%"></div>
+          </div>
+          <span class="trait-label-end">粘人撒娇</span>
+        </div>
+
+        <span class="trait-name">Sharpness 锋利轴</span>
+        <div class="trait-row">
+          <span class="trait-label">温柔体贴</span>
+          <div class="trait-bar">
+            <div class="trait-bar__center"></div>
+            <div class="trait-bar__fill" style="left:30%;width:20%"></div>
+          </div>
+          <span class="trait-label-end">毒舌傲娇</span>
+        </div>
+      </div>
+
+      <p><strong>初始状态：</strong>所有维度从 0（中性）开始<br>
+      <strong>变化幅度：</strong>每次对话 ±0.01 ~ ±0.03（渐进式，不会突变）<br>
+      <strong>感知阈值：</strong>约 10-20 次对话后开始感受到明显风格变化<br>
+      <strong>参数边界：</strong>严格 clamp 在 [-1, +1]，不会溢出</p>
+
+      <h3>演化触发规则</h3>
+      <table>
+        <thead>
+          <tr><th>你的行为</th><th>性格变化</th><th>结果</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>话多、热情、感叹号多</td><td>energy ↑</td><td>猫咪被带动变活泼</td></tr>
+          <tr><td>话少、安静、深夜聊天</td><td>energy ↓</td><td>猫咪学会安静陪伴</td></tr>
+          <tr><td>频繁来聊、表达想念</td><td>attachment ↑</td><td>猫咪变得更粘人</td></tr>
+          <tr><td>回复简短、长时间不来</td><td>attachment ↓</td><td>猫咪学会独立</td></tr>
+          <tr><td>幽默吐槽、开玩笑</td><td>sharpness ↑</td><td>猫咪学会怼人</td></tr>
+          <tr><td>伤心脆弱、需要安慰</td><td>sharpness ↓</td><td>猫咪变得温柔</td></tr>
+        </tbody>
+      </table>
+
+      <h3>性格如何体现在对话中</h3>
+      <p>同一个问题「今天做了什么？」，不同性格的小橘回复截然不同：</p>
+
+      <div class="comparison">
+        <div class="comparison-card">
+          <div class="comparison-card__label">性格 A</div>
+          <div class="comparison-card__persona">安静 · 独立 · 温柔</div>
+          <div class="comparison-card__text">嗯...今天就在窝里待着。你呢？</div>
+        </div>
+        <div class="comparison-card">
+          <div class="comparison-card__label">性格 B</div>
+          <div class="comparison-card__persona">活泼 · 粘人 · 毒舌</div>
+          <div class="comparison-card__text">等你啊！！你怎么才来！！我都无聊死了喵！（气鼓鼓）你是不是又在摸鱼没理我！</div>
+        </div>
+      </div>
+
+      <h3>性格影响的四个层面</h3>
+      <table>
+        <thead>
+          <tr><th>层面</th><th>低值表现</th><th>高值表现</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>用词</strong></td><td>"嗯""哦""..."</td><td>"哇！！""天呐！""喵喵喵！"</td></tr>
+          <tr><td><strong>句式</strong></td><td>短句、省略、轻声</td><td>长句、感叹、连续输出</td></tr>
+          <tr><td><strong>主动性</strong></td><td>被动回应，不主动找话题</td><td>主动提问、追问、撒娇</td></tr>
+          <tr><td><strong>情绪表达</strong></td><td>内敛含蓄，括号动作少</td><td>外放丰富（蹦跳）（气鼓鼓）</td></tr>
+        </tbody>
+      </table>
+
+      <h3>渐进式演化的体验设计</h3>
+      <p>为什么选择极小幅度的渐变而非突变？</p>
+      <div class="highlight-box">
+        <strong>像养真实宠物一样：</strong>你不会在某一天突然发现猫的性格变了，而是在某个瞬间回想起"它以前不是这样的"——这种渐进感才是养成的核心乐趣。
+      </div>
+      <table>
+        <thead>
+          <tr><th>设计决策</th><th>原因</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>每次变化 ±0.01~0.03</td><td>用户无法感知单次变化，但累积后差异显著</td></tr>
+          <tr><td>分析由 LLM 执行</td><td>规则引擎无法理解语义；LLM 能精确判断"这句话是开玩笑还是真生气"</td></tr>
+          <tr><td>异步执行，不阻塞 UI</td><td>分析请求在回复显示后静默运行，用户无感知</td></tr>
+          <tr><td>三维度独立变化</td><td>组合出 8 种以上明显不同的性格类型，给每个用户独特体验</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 技术方案 -->
+    <section>
+      <h2>技术方案</h2>
+
+      <h3>系统架构</h3>
+      <div class="arch-diagram">
+        <div class="arch-label">前端 (浏览器)</div>
+        <div class="arch-layer">
+          <div class="arch-box">Chat UI</div>
+          <div class="arch-box">Cat Animation</div>
+          <div class="arch-box arch-box--primary">Personality Engine</div>
+          <div class="arch-box">localStorage</div>
+        </div>
+        <div class="arch-arrow">↕ HTTPS / SSE</div>
+        <div class="arch-label">后端 (Serverless)</div>
+        <div class="arch-layer">
+          <div class="arch-box">/api/chat/stream</div>
+          <div class="arch-box">/api/chat</div>
+          <div class="arch-box">/api/health</div>
+        </div>
+        <div class="arch-arrow">↕ API Call</div>
+        <div class="arch-label">LLM Provider (可插拔)</div>
+        <div class="arch-layer">
+          <div class="arch-box arch-box--dark">DeepSeek</div>
+          <div class="arch-box arch-box--dark">OpenAI</div>
+          <div class="arch-box arch-box--dark">Claude</div>
+          <div class="arch-box arch-box--dark">Moonshot</div>
+          <div class="arch-box arch-box--dark">更多...</div>
+        </div>
+      </div>
+
+      <h3>性格演化执行流程</h3>
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-step__num">1</div>
+          <div class="flow-step__content">
+            <div class="flow-step__title">构建动态 System Prompt</div>
+            <div class="flow-step__desc">读取当前性格参数 + 成长阶段 + 记忆摘要，拼接为完整人设指令</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step__num">2</div>
+          <div class="flow-step__content">
+            <div class="flow-step__title">LLM 流式对话</div>
+            <div class="flow-step__desc">猫咪依据动态 Prompt 生成回复，性格实时体现在用词和语气中</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step__num">3</div>
+          <div class="flow-step__content">
+            <div class="flow-step__title">前端逐 token 渲染</div>
+            <div class="flow-step__desc">SSE 流式接收，实时更新消息气泡，打字机效果</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step__num">4</div>
+          <div class="flow-step__content">
+            <div class="flow-step__title">性格演化分析（异步）</div>
+            <div class="flow-step__desc">独立 LLM 调用分析本轮对话，返回 <code>{"energy": 0.02, "attachment": 0.01, "sharpness": -0.01}</code></div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step__num">5</div>
+          <div class="flow-step__content">
+            <div class="flow-step__title">参数更新 & 持久化</div>
+            <div class="flow-step__desc">Clamp 到 [-1,1] 范围后写入 localStorage，下次对话生效</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step__num">6</div>
+          <div class="flow-step__content">
+            <div class="flow-step__title">记忆摘要更新（每 10 次对话）</div>
+            <div class="flow-step__desc">LLM 从历史对话中提取用户关键信息（名字、职业、喜好、近期事件）</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>动态 Prompt 生成示例</h3>
+      <div class="code-block">
+<span class="comment">// personality = { energy: 0.6, attachment: 0.3, sharpness: -0.4 }</span>
+<span class="comment">// 生成的 System Prompt:</span>
+
+<span class="string">你是一只名叫"小橘"的猫咪电子宠物。
+
+【成长阶段：熟悉】
+你们已经比较熟了，你开始展现真实的自己。
+
+【你的性格】
+- 你超级活泼好动！话很多，经常蹦蹦跳跳
+- 你喜欢粘着主人，会主动找话题聊
+- 你说话温和友好，偶尔调皮一下
+
+【记忆】
+- 主人叫小明，是大学生
+- 最近在准备期末考试
+- 喜欢深夜来聊天</span>
+      </div>
+
+      <h3>性格分析 Prompt</h3>
+      <p>每次对话结束后，发送独立请求给 LLM 进行语义分析：</p>
+      <div class="code-block">
+<span class="comment">// 输入:</span>
+当前参数: energy=<span class="number">0.6</span>, attachment=<span class="number">0.3</span>, sharpness=<span class="number">-0.4</span>
+用户说: <span class="string">"哈哈哈你太搞笑了！"</span>
+猫咪说: <span class="string">"那当然！有本喵在还能无聊吗"</span>
+
+<span class="comment">// LLM 返回 (严格 JSON):</span>
+{<span class="key">"energy"</span>: <span class="number">0.02</span>, <span class="key">"attachment"</span>: <span class="number">0.01</span>, <span class="key">"sharpness"</span>: <span class="number">0.01</span>}
+      </div>
+
+      <h3>技术栈</h3>
+      <table>
+        <thead>
+          <tr><th>层面</th><th>选型</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>前端</td><td>原生 HTML/CSS/JS</td><td>零依赖，无构建步骤，ES Modules</td></tr>
+          <tr><td>动画</td><td>SVG + CSS Animation</td><td>呼吸、眨眼、说话、摇尾巴</td></tr>
+          <tr><td>后端</td><td>Netlify Functions</td><td>Serverless，免运维，按需调用</td></tr>
+          <tr><td>AI</td><td>DeepSeek API（可插拔）</td><td>流式输出 SSE，6种模型可选</td></tr>
+          <tr><td>存储</td><td>localStorage</td><td>纯客户端，隐私友好</td></tr>
+          <tr><td>部署</td><td>Netlify</td><td>推送即部署，全球 CDN，免费</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 路线图 -->
+    <section>
+      <h2>产品路线图</h2>
+
+      <h3>已实现 (MVP)</h3>
+      <div class="roadmap-item roadmap-item--done">文字聊天 + 流式回复</div>
+      <div class="roadmap-item roadmap-item--done">三维度性格自适应演化</div>
+      <div class="roadmap-item roadmap-item--done">对话记忆 + LLM 摘要</div>
+      <div class="roadmap-item roadmap-item--done">成长阶段系统（四阶段）</div>
+      <div class="roadmap-item roadmap-item--done">设置面板 + 状态可视化</div>
+      <div class="roadmap-item roadmap-item--done">多模型切换（6种 Provider）</div>
+
+      <h3>未来规划</h3>
+      <div class="roadmap-item roadmap-item--todo">语音对话 (TTS + STT)</div>
+      <div class="roadmap-item roadmap-item--todo">触摸互动（摸头、挠下巴）</div>
+      <div class="roadmap-item roadmap-item--todo">多种宠物形象选择</div>
+      <div class="roadmap-item roadmap-item--todo">成长阶段外观进化（幼猫→成猫）</div>
+      <div class="roadmap-item roadmap-item--todo">云端同步 + 账号系统</div>
+      <div class="roadmap-item roadmap-item--todo">主动推送消息（定时问候）</div>
+      <div class="roadmap-item roadmap-item--todo">宠物社区（分享/互动）</div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>AI 电子宠物「小橘」 · 产品说明文档 v1.0</p>
+      <p style="margin-top:6px">
+        <a href="https://frolicking-chaja-9b73a8.netlify.app" target="_blank" style="color:var(--color-primary);text-decoration:none">在线 Demo</a>
+        &nbsp;·&nbsp;
+        <a href="https://github.com/19972127982-png/ai-pet" target="_blank" style="color:var(--color-primary);text-decoration:none">GitHub</a>
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>
