@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" class="cat-svg">
+  <!-- Shadow on ground -->
+  <ellipse cx="100" cy="210" rx="38" ry="6" fill="#F0D5B0" opacity="0.5"/>
+
+  <!-- Tail (behind body) -->
+  <path class="cat-tail" d="M 138 175 Q 168 165 172 140 Q 176 118 162 112"
+        fill="none" stroke="#FFB347" stroke-width="14" stroke-linecap="round"
+        transform-origin="138 175"/>
+  <!-- Tail tip (darker) -->
+  <path d="M 166 122 Q 172 115 162 112"
+        fill="none" stroke="#F4A460" stroke-width="14" stroke-linecap="round"/>
+
+  <!-- Body (small, round, chibi style) -->
+  <ellipse cx="100" cy="178" rx="38" ry="30" fill="#FFB347"/>
+  <!-- Belly patch -->
+  <ellipse cx="100" cy="183" rx="24" ry="20" fill="#FFF3E0"/>
+
+  <!-- Front paws (stubby little arms) -->
+  <ellipse cx="72" cy="185" rx="10" ry="12" fill="#FFB347"/>
+  <ellipse cx="128" cy="185" rx="10" ry="12" fill="#FFB347"/>
+  <!-- Paw pads -->
+  <circle cx="72" cy="192" r="4" fill="#FFCDD2"/>
+  <circle cx="128" cy="192" r="4" fill="#FFCDD2"/>
+
+  <!-- ===== HEAD (oversized for chibi/moe ratio) ===== -->
+  <circle cx="100" cy="95" r="55" fill="#FFB347"/>
+
+  <!-- Face inner area (lighter) -->
+  <ellipse cx="100" cy="102" rx="40" ry="36" fill="#FFDFA0"/>
+
+  <!-- Ears (rounder, cuter) -->
+  <ellipse cx="65" cy="55" rx="16" ry="22" fill="#FFB347" transform="rotate(-15 65 55)"/>
+  <ellipse cx="135" cy="55" rx="16" ry="22" fill="#FFB347" transform="rotate(15 135 55)"/>
+  <!-- Inner ears (pink) -->
+  <ellipse cx="65" cy="57" rx="9" ry="14" fill="#FFCDD2" transform="rotate(-15 65 57)"/>
+  <ellipse cx="135" cy="57" rx="9" ry="14" fill="#FFCDD2" transform="rotate(15 135 57)"/>
+
+  <!-- ===== EYES (big, round, sparkly - moe style) ===== -->
+  <g class="cat-eye cat-eye--left" transform-origin="82 92">
+    <!-- Eye white -->
+    <ellipse cx="82" cy="92" rx="12" ry="13" fill="#FFFFFF"/>
+    <!-- Iris -->
+    <ellipse cx="82" cy="94" rx="9" ry="10" fill="#4A3728"/>
+    <!-- Pupil -->
+    <ellipse cx="82" cy="95" rx="5" ry="6" fill="#1A1A1A"/>
+    <!-- Sparkle big -->
+    <circle cx="78" cy="89" r="3.5" fill="#FFFFFF"/>
+    <!-- Sparkle small -->
+    <circle cx="85" cy="96" r="1.8" fill="#FFFFFF" opacity="0.8"/>
+  </g>
+  <g class="cat-eye cat-eye--right" transform-origin="118 92">
+    <!-- Eye white -->
+    <ellipse cx="118" cy="92" rx="12" ry="13" fill="#FFFFFF"/>
+    <!-- Iris -->
+    <ellipse cx="118" cy="94" rx="9" ry="10" fill="#4A3728"/>
+    <!-- Pupil -->
+    <ellipse cx="118" cy="95" rx="5" ry="6" fill="#1A1A1A"/>
+    <!-- Sparkle big -->
+    <circle cx="114" cy="89" r="3.5" fill="#FFFFFF"/>
+    <!-- Sparkle small -->
+    <circle cx="121" cy="96" r="1.8" fill="#FFFFFF" opacity="0.8"/>
+  </g>
+
+  <!-- Blush (bigger, more visible) -->
+  <circle class="cat-blush" cx="65" cy="108" r="8" fill="#FFAB91" opacity="0.6"/>
+  <circle class="cat-blush" cx="135" cy="108" r="8" fill="#FFAB91" opacity="0.6"/>
+
+  <!-- Nose (tiny, cute bean) -->
+  <ellipse cx="100" cy="107" rx="4" ry="3" fill="#FF8A80"/>
+
+  <!-- Mouth (neutral - small w shape) -->
+  <g class="cat-mouth cat-mouth-neutral">
+    <path d="M 94 112 Q 97 116 100 112 Q 103 116 106 112"
+          fill="none" stroke="#4A3728" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Mouth (smile - happy curved) -->
+  <g class="cat-mouth-smile" opacity="0">
+    <path d="M 91 111 Q 96 119 100 117 Q 104 119 109 111"
+          fill="none" stroke="#4A3728" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Whiskers (shorter, cuter) -->
+  <line x1="62" y1="104" x2="76" y2="106" stroke="#C8A070" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="60" y1="111" x2="75" y2="111" stroke="#C8A070" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="124" y1="106" x2="138" y2="104" stroke="#C8A070" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="125" y1="111" x2="140" y2="111" stroke="#C8A070" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- Forehead marking (simple "M" shape) -->
+  <path d="M 85 72 L 92 67 L 100 74 L 108 67 L 115 72"
+        fill="none" stroke="#F4A460" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

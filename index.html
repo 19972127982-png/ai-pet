@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>AI Cat Pet</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cat.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="css/panels.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <button class="header__btn" id="btn-settings" aria-label="Settings">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
+      <h1 class="header__title" id="pet-name">小橘</h1>
+      <button class="header__btn" id="btn-status" aria-label="Status">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 20V10"/>
+          <path d="M12 20V4"/>
+          <path d="M6 20v-6"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Cat Display Area -->
+    <section class="cat-area">
+      <div class="speech-bubble" id="speech-bubble">
+        <p class="speech-bubble__text" id="speech-text"></p>
+      </div>
+      <div class="cat-container" id="cat-container">
+        <!-- Cat SVG will be here -->
+      </div>
+    </section>
+
+    <!-- Chat History -->
+    <section class="chat-area" id="chat-area">
+      <div class="chat-messages" id="chat-messages">
+        <!-- Messages will be dynamically added here -->
+      </div>
+      <div class="chat-empty" id="chat-empty">
+        <p>和小橘说点什么吧~</p>
+      </div>
+    </section>
+
+    <!-- Input Area -->
+    <footer class="input-area">
+      <div class="input-wrapper">
+        <input
+          type="text"
+          class="input-field"
+          id="input-field"
+          placeholder="说点什么..."
+          autocomplete="off"
+        >
+        <button class="send-btn send-btn--disabled" id="send-btn" aria-label="Send" disabled>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ===== Settings Panel ===== -->
+  <div class="panel-overlay" id="panel-settings">
+    <div class="panel">
+      <div class="panel__header">
+        <h2 class="panel__title">Settings</h2>
+        <button class="panel__close" id="close-settings" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="panel__body">
+        <!-- Pet Name -->
+        <div class="form-group">
+          <label class="form-label">猫咪名字</label>
+          <input type="text" class="form-input" id="setting-name" placeholder="小橘">
+        </div>
+
+        <!-- Provider -->
+        <div class="form-group">
+          <label class="form-label">AI 模型</label>
+          <select class="form-select" id="setting-provider">
+            <option value="deepseek">DeepSeek (深度求索)</option>
+            <option value="openai">OpenAI (GPT)</option>
+            <option value="claude">Claude (Anthropic)</option>
+            <option value="moonshot">Moonshot (Kimi)</option>
+            <option value="zhipu">智谱 (GLM)</option>
+            <option value="qwen">通义千问 (Qwen)</option>
+          </select>
+        </div>
+
+        <!-- Proxy URL -->
+        <div class="form-group">
+          <label class="form-label">后端地址</label>
+          <input type="text" class="form-input" id="setting-proxy" placeholder="http://localhost:3001">
+        </div>
+
+        <!-- Divider -->
+        <div class="form-divider"></div>
+
+        <!-- Danger Zone -->
+        <div class="form-group">
+          <label class="form-label form-label--danger">危险操作</label>
+          <button class="btn btn--outline" id="btn-clear-history">清除对话记忆</button>
+          <button class="btn btn--danger" id="btn-reset-pet">重置宠物</button>
+        </div>
+      </div>
+      <div class="panel__footer">
+        <button class="btn btn--primary" id="btn-save-settings">保存设置</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Status Panel ===== -->
+  <div class="panel-overlay" id="panel-status">
+    <div class="panel">
+      <div class="panel__header">
+        <h2 class="panel__title">小橘的状态</h2>
+        <button class="panel__close" id="close-status" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="panel__body">
+        <!-- Growth Stage -->
+        <div class="status-card">
+          <div class="status-card__label">成长阶段</div>
+          <div class="status-card__value" id="status-stage">初识</div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="status-row">
+          <div class="status-card status-card--half">
+            <div class="status-card__label">互动次数</div>
+            <div class="status-card__value" id="status-interactions">0</div>
+          </div>
+          <div class="status-card status-card--half">
+            <div class="status-card__label">当前心情</div>
+            <div class="status-card__value" id="status-mood">平静</div>
+          </div>
+        </div>
+
+        <!-- Personality Bars -->
+        <div class="personality-section">
+          <h3 class="personality-section__title">性格特征</h3>
+
+          <div class="trait-bar">
+            <span class="trait-bar__label-left">安静</span>
+            <div class="trait-bar__track">
+              <div class="trait-bar__fill" id="trait-energy"></div>
+              <div class="trait-bar__center"></div>
+            </div>
+            <span class="trait-bar__label-right">活泼</span>
+          </div>
+
+          <div class="trait-bar">
+            <span class="trait-bar__label-left">独立</span>
+            <div class="trait-bar__track">
+              <div class="trait-bar__fill" id="trait-attachment"></div>
+              <div class="trait-bar__center"></div>
+            </div>
+            <span class="trait-bar__label-right">粘人</span>
+          </div>
+
+          <div class="trait-bar">
+            <span class="trait-bar__label-left">温柔</span>
+            <div class="trait-bar__track">
+              <div class="trait-bar__fill" id="trait-sharpness"></div>
+              <div class="trait-bar__center"></div>
+            </div>
+            <span class="trait-bar__label-right">毒舌</span>
+          </div>
+        </div>
+
+        <!-- Memory Summary -->
+        <div class="memory-section">
+          <h3 class="memory-section__title">记忆</h3>
+          <p class="memory-section__content" id="status-memory">还没有足够的对话来形成记忆...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Toast Notification ===== -->
+  <div class="toast" id="toast">
+    <span class="toast__text" id="toast-text"></span>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

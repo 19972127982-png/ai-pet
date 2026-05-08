@@ -1,0 +1,123 @@
+/* ===== Chat Messages Container ===== */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-sm) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  scroll-behavior: smooth;
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+/* ===== Message Bubble ===== */
+.message {
+  display: flex;
+  flex-direction: column;
+  max-width: 78%;
+  animation: message-in 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@keyframes message-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* User message */
+.message--user {
+  align-self: flex-end;
+}
+
+.message--user .message__bubble {
+  background: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-md) var(--radius-md) var(--radius-xs) var(--radius-md);
+}
+
+/* Assistant message */
+.message--assistant {
+  align-self: flex-start;
+}
+
+.message--assistant .message__bubble {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-radius: var(--radius-md) var(--radius-md) var(--radius-md) var(--radius-xs);
+  box-shadow: var(--color-shadow-sm);
+}
+
+.message__bubble {
+  padding: 10px 14px;
+  font-size: var(--font-size-base);
+  line-height: 1.65;
+  word-break: break-word;
+}
+
+/* ===== Timestamp ===== */
+.message__time {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-top: 3px;
+  padding: 0 2px;
+}
+
+.message--user .message__time {
+  text-align: right;
+}
+
+/* ===== Typing Indicator ===== */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 16px;
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--color-shadow-sm);
+  align-self: flex-start;
+}
+
+.typing-indicator__dot {
+  width: 5px;
+  height: 5px;
+  background: var(--color-text-muted);
+  border-radius: 50%;
+  animation: typing-bounce 1.2s ease-in-out infinite;
+}
+
+.typing-indicator__dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typing-indicator__dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes typing-bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+  30% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}

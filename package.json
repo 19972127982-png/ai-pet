@@ -1,0 +1,9 @@
+{
+  "name": "ai-pet",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI Cat Pet - Interactive web pet powered by LLM",
+  "dependencies": {
+    "@netlify/functions": "^2.8.0"
+  }
+}

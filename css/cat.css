@@ -1,0 +1,126 @@
+/* ===== Cat Container ===== */
+.cat-container {
+  width: 220px;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.cat-svg {
+  width: 200px;
+  height: 220px;
+  filter: drop-shadow(0 6px 16px rgba(255, 179, 71, 0.25));
+  animation: cat-breathe 3.5s ease-in-out infinite;
+}
+
+/* ===== Idle Animation: Breathing (softer, bouncier) ===== */
+@keyframes cat-breathe {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.015) translateY(-3px); }
+}
+
+/* ===== Idle Animation: Blinking ===== */
+.cat-eye {
+  animation: cat-blink 5s ease-in-out infinite;
+}
+
+.cat-eye--right {
+  animation-delay: 0.15s;
+}
+
+@keyframes cat-blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95%, 97% { transform: scaleY(0.05); }
+}
+
+/* ===== Idle: Subtle ear twitch ===== */
+.cat-svg ellipse[transform*="rotate(-15"] {
+  animation: ear-twitch-left 6s ease-in-out infinite;
+}
+
+.cat-svg ellipse[transform*="rotate(15"] {
+  animation: ear-twitch-right 6s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+@keyframes ear-twitch-left {
+  0%, 90%, 100% { transform: rotate(-15deg); }
+  93% { transform: rotate(-20deg); }
+  96% { transform: rotate(-15deg); }
+}
+
+@keyframes ear-twitch-right {
+  0%, 90%, 100% { transform: rotate(15deg); }
+  93% { transform: rotate(20deg); }
+  96% { transform: rotate(15deg); }
+}
+
+/* ===== Talking Animation (bouncy and lively) ===== */
+.cat-container--talking .cat-svg {
+  animation: cat-talk-bounce 0.5s ease-in-out infinite;
+}
+
+.cat-container--talking .cat-mouth {
+  animation: cat-talk-mouth 0.35s ease-in-out infinite;
+}
+
+.cat-container--talking .cat-tail {
+  animation: cat-tail-wag 0.7s ease-in-out infinite;
+}
+
+@keyframes cat-talk-bounce {
+  0%, 100% { transform: scale(1) translateY(0); }
+  25% { transform: scale(1.01) translateY(-4px); }
+  75% { transform: scale(0.99) translateY(1px); }
+}
+
+@keyframes cat-talk-mouth {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.8) translateY(1px); }
+}
+
+@keyframes cat-tail-wag {
+  0%, 100% { transform: rotate(-12deg); }
+  50% { transform: rotate(12deg); }
+}
+
+/* ===== Mood: Happy ===== */
+.cat-container--happy .cat-mouth-smile {
+  opacity: 1;
+}
+
+.cat-container--happy .cat-mouth-neutral {
+  opacity: 0;
+}
+
+.cat-container--happy .cat-blush {
+  opacity: 0.85;
+}
+
+.cat-container--happy .cat-svg {
+  animation: cat-happy-wiggle 2s ease-in-out infinite;
+}
+
+@keyframes cat-happy-wiggle {
+  0%, 100% { transform: scale(1) translateY(0) rotate(0deg); }
+  25% { transform: scale(1.01) translateY(-2px) rotate(-1deg); }
+  75% { transform: scale(1.01) translateY(-2px) rotate(1deg); }
+}
+
+/* ===== Mood: Sad ===== */
+.cat-container--sad .cat-svg {
+  animation: cat-breathe 5s ease-in-out infinite;
+  filter: drop-shadow(0 4px 12px rgba(100, 100, 100, 0.12));
+}
+
+.cat-container--sad .cat-blush {
+  opacity: 0.2;
+}
+
+/* ===== Cheek Blush ===== */
+.cat-blush {
+  opacity: 0.5;
+  transition: opacity 0.4s ease;
+}
